@@ -7,7 +7,7 @@ using HrLeaveManagement.Application.DTOs.Common;
 
 namespace HrLeaveManagement.Application.DTOs.LeaveTypes
 {
-    public class LeaveTypeDTo:BaseDTO
+    public class LeaveTypeDTo:BaseDTO,IleaveTypeDTo
     {
         public string Name { get; set; }
         public int DefaultDays { get; set; }
