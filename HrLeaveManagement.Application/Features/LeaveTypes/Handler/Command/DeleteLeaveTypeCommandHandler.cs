@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using HrLeaveManagement.Application.Contracts.Presistence.Repositories;
+using HrLeaveManagement.Application.Exceptions;
 using HrLeaveManagement.Application.Features.LeaveTypes.Request.Command;
 using MediatR;
 
@@ -26,7 +27,7 @@ namespace HrLeaveManagement.Application.Features.LeaveTypes.Handler.Command
             var leavetype = await _leaveTypeRepository.Get(request.id);
             if (leavetype == null)
             {
-                throw new Exception();
+                throw new NotFoundException(nameof(leavetype),request.id);
             }
 
             await _leaveTypeRepository.Delete(leavetype);

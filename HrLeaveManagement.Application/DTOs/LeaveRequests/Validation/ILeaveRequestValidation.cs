@@ -8,9 +8,10 @@ using HrLeaveManagement.Application.Contracts.Presistence.Repositories;
 
 namespace HrLeaveManagement.Application.DTOs.LeaveRequests.Validation
 {
-    public class LeaveRequestValidation:AbstractValidator<LeaveRequestDTO>
-    {  private readonly ILeaveTypeRepository _leaveTypeRepository;
-        public LeaveRequestValidation(ILeaveTypeRepository leaveTypeRepository)
+    public class ILeaveRequestValidation:AbstractValidator<ILeaveRequestDTO>
+    { 
+        private readonly ILeaveTypeRepository _leaveTypeRepository;
+        public ILeaveRequestValidation(ILeaveTypeRepository leaveTypeRepository)
         {
             _leaveTypeRepository = leaveTypeRepository;
             RuleFor(p => p.StartDate)
