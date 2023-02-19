@@ -7,17 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
-    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.0" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.3" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\Infrastructures\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\HrLeaveManagement.Application\HrLeaveManagement.Application.csproj" />
     <ProjectReference Include="..\HrLeaveManagemnt.Domian\HrLeaveManagemnt.Domian.csproj" />
   </ItemGroup>
 

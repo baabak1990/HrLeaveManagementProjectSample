@@ -8,6 +8,7 @@ using Hr.LeaveManagement.Domain.Entity.LeaveEntities;
 using HrLeaveManagement.Application.Contracts.Presistence.Repositories;
 using HrLeaveManagement.Application.DTOs.LeaveAllocations.Validations;
 using HrLeaveManagement.Application.Features.leaveAllocations.Request.Command;
+using HrLeaveManagement.Application.Models;
 using MediatR;
 
 namespace HrLeaveManagement.Application.Features.leaveAllocations.Handler.Command
@@ -36,6 +37,8 @@ namespace HrLeaveManagement.Application.Features.leaveAllocations.Handler.Comman
             }
             var leaveAllocation = _mapper.Map<LeaveAllocation>(request.LeaveAllocationDto);
             leaveAllocation = await _leaveAllocationRepository.Add(leaveAllocation);
+         
+
             return leaveAllocation.Id;
         }
     }
