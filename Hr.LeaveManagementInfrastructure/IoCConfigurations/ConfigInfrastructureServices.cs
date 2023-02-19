@@ -17,7 +17,7 @@ namespace Hr.LeaveManagementInfrastructure.IoCConfigurations
         {
             services.Configure<EmailSetting>(configuration.GetSection("EmailSettings"));
             services.AddTransient<IEmailSender, EmailSender>();
-
+            //
             return services;
         }
     }
