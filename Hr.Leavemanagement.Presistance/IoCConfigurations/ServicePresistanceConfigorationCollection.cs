@@ -18,12 +18,12 @@ namespace Hr.Leavemanagement.Presistance.IoCConfigurations
         {
             //Adding ConnectionStrings
             services.AddDbContext<LeaveManagementContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("")));
+                options.UseSqlServer(configuration.GetConnectionString("HrDatabaseConnectionString")));
 
 
 
             services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
-            services.AddScoped<ILeaveTypeRepository,ILeaveTypeRepository>();
+            services.AddScoped<ILeaveTypeRepository,LeaveTypeRepository>();
             services.AddScoped<ILeaveAllocationRepository,LeaveAllocationRepository>();
             services.AddScoped<ILeaveRequestRepository,LeaveRequestRepository>();
 

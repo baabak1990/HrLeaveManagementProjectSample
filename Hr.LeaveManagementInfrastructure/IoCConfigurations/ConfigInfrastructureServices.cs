@@ -13,7 +13,7 @@ namespace Hr.LeaveManagementInfrastructure.IoCConfigurations
 {
     public static class ConfigInfrastructureServices
     {
-        public static IServiceCollection Services(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection ServicesConfiguration(this IServiceCollection services, IConfiguration configuration)
         {
             services.Configure<EmailSetting>(configuration.GetSection("EmailSettings"));
             services.AddTransient<IEmailSender, EmailSender>();
