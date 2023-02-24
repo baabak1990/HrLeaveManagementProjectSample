@@ -10,7 +10,7 @@ using MediatR;
 
 namespace HrLeaveManagement.Application.Features.LeaveTypes.Request.Command
 {
-    public class CreateLeaveTypeCommand:IRequest<BaseCommandResponse>
+    public class CreateLeaveTypeCommand:IRequest<int>
     {
         public LeaveTypeDTo LeaveTypeDTo { get; set; }
     }

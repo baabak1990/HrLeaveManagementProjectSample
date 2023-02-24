@@ -9,6 +9,7 @@ using HrLeaveManagement.Application.Contracts.Presistence.Repositories;
 using HrLeaveManagement.Application.DTOs.LeaveAllocations.Validations;
 using HrLeaveManagement.Application.Features.leaveAllocations.Request.Command;
 using HrLeaveManagement.Application.Models;
+using HrLeaveManagement.Application.Response;
 using MediatR;
 
 namespace HrLeaveManagement.Application.Features.leaveAllocations.Handler.Command
@@ -29,17 +30,25 @@ namespace HrLeaveManagement.Application.Features.leaveAllocations.Handler.Comman
 
         public async Task<int> Handle(CreateLeaveAllocationCommand request, CancellationToken cancellationToken)
         {
+            var response = new BaseCommandResponse();
             var validation = new LeaveAllocationValidation(_leaveTypeRepository);
             var validationResult =await validation.ValidateAsync(request.LeaveAllocationDto);
+
             if (validationResult.IsValid==false)
             {
-                throw new Exception();
+                response.Success = false;
+                response.Message = "Some Errors occurred During Creation";
+                response.Errors=validationResult.Errors.Select(e=>e.ErrorMessage).ToList();
+
             }
             var leaveAllocation = _mapper.Map<LeaveAllocation>(request.LeaveAllocationDto);
             leaveAllocation = await _leaveAllocationRepository.Add(leaveAllocation);
          
+            response.Success = true;
+            response.Message = "Operation Complete !";
+            response.Id = leaveAllocation.Id;
 
-            return leaveAllocation.Id;
+            return response.Id;
         }
     }
 }

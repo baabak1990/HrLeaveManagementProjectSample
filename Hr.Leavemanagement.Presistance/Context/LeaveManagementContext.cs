@@ -21,7 +21,7 @@ namespace Hr.Leavemanagement.Presistance.Context
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(LeaveManagementContext).Assembly);
         }
 
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = new CancellationToken())
         {
             foreach (var entry in ChangeTracker.Entries<LeaveBaseEntity<int>>())
             {
@@ -31,7 +31,7 @@ namespace Hr.Leavemanagement.Presistance.Context
                     entry.Entity.CreateDate = DateTime.Now;
                 }
             }
-            return base.SaveChangesAsync(cancellationToken);
+            return await base.SaveChangesAsync(cancellationToken);
         }
 
         #region Dbset

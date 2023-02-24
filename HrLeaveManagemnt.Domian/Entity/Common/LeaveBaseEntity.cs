@@ -12,9 +12,9 @@ namespace Hr.LeaveManagement.Domain.Entity.Common
         [Key]
         public T Id { get; set; }
         public DateTime CreateDate { get; set; }
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
         public DateTime? ModifyDate { get; set; }
-        public string ModifiedBy { get; set; }
+        public string? ModifiedBy { get; set; }
 
     }
 }

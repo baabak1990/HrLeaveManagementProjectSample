@@ -4,6 +4,7 @@ using Hr.Leavemanagement.Presistance.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Hr.Leavemanagement.Presistance.Migrations
 {
     [DbContext(typeof(LeaveManagementContext))]
-    partial class LeaveManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20230223211020_ChangingInBaseDomainEntity")]
+    partial class ChangingInBaseDomainEntity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -56,24 +59,6 @@ namespace Hr.Leavemanagement.Presistance.Migrations
                     b.HasIndex("LeaveTypeId");
 
                     b.ToTable("LeaveAllocations");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LeaveTypeId = 1,
-                            NumberOfDays = 3,
-                            Period = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            LeaveTypeId = 1,
-                            NumberOfDays = 5,
-                            Period = 2
-                        });
                 });
 
             modelBuilder.Entity("Hr.LeaveManagement.Domain.Entity.LeaveEntities.LeaveRequest", b =>
@@ -158,22 +143,6 @@ namespace Hr.Leavemanagement.Presistance.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LeaveTypes");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DefaultDays = 10,
-                            Name = "vacation"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CreateDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            DefaultDays = 11,
-                            Name = "Sick"
-                        });
                 });
 
             modelBuilder.Entity("Hr.LeaveManagement.Domain.Entity.LeaveEntities.LeaveAllocation", b =>

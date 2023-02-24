@@ -17,10 +17,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.Configuration();
 builder.Services.ServicePresistanceConfigorationCollection(builder.Configuration);
 builder.Services.ServicesConfiguration(builder.Configuration);
-//builder.Services.AddDbContext<LeaveManagementContext>(options =>
-//{
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("HrDatabaseConnectionString"));
-//});
+
 
 
 

@@ -15,7 +15,7 @@ using MediatR;
 
 namespace HrLeaveManagement.Application.Features.LeaveTypes.Handler.Command
 {
-    public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeCommand, BaseCommandResponse>
+    public class CreateLeaveTypeCommandHandler : IRequestHandler<CreateLeaveTypeCommand, int>
     {
         private readonly ILeaveTypeRepository _leaveTypeRepository;
         private readonly IMapper _mapper;
@@ -26,7 +26,7 @@ namespace HrLeaveManagement.Application.Features.LeaveTypes.Handler.Command
             _mapper = mapper;
         }
 
-        public async Task<BaseCommandResponse> Handle(CreateLeaveTypeCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateLeaveTypeCommand request, CancellationToken cancellationToken)
         {
             var response = new BaseCommandResponse();
             var validation = new CreateLeaveTypeValidations();
@@ -47,7 +47,7 @@ namespace HrLeaveManagement.Application.Features.LeaveTypes.Handler.Command
             response.Message = "Operation was successful";
             response.Id = request.LeaveTypeDTo.Id;
 
-            return response;
+            return response.Id;
         }
     }
 }
